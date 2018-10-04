@@ -50,18 +50,30 @@ app.use(function(req, res, next) {
  * HTML Endpoints
  */
 
+
+// GET REQUESTS
 app.get('/', function homepage(req, res) {
-  // res.sendFile(__dirname + '/views/index.html');
   res.send('hello');
 });
 
-// https://medium.com/@alvenw/how-to-store-images-to-mongodb-with-node-js-fb3905c37e6d
-app.post('/api/photo',function(req,res){
-  var newItem = new Item();
-  newItem.img.data = fs.readFileSync(req.files.userPhoto.path);
-  newItem.img.contentType = 'image/png';
-  newItem.save();
- });
+// POST REQUESTS
+// let newUser = req.body.username
+app.post('/api/user/create',(req, res)=>{
+  db.User.create({
+    username: 'Steve',
+    password:'password',
+    dateJoined: '10/03/2018',
+    currentCity:'San Francisco, USA'
+  }, function(err, newUser){
+    if(err){
+      console.log('Error' + err)
+      return
+    }
+    else{
+      res.status(200).send('Working' + newUser)
+    }
+  })
+});
 
 /*
  * JSON API Endpoints
