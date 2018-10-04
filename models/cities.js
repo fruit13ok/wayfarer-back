@@ -1,11 +1,11 @@
-const mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
     
 
-const CitySchema = new Schema({
+var CitySchema = new Schema({
     photo: String,
     name: String
 });
 
-const City = mongoose.model('City', CitySchema);
-module.export = City;
+var City = mongoose.model('City', CitySchema);
+module.exports = City;

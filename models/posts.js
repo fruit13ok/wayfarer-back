@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     City = require('./cities');
 
 var PostSchema = new Schema({
-    dateCreated: String,
+    dateCreated: { type: Date, default: Date.now },
     body: String,
     user: [{
         type: Schema.Types.ObjectId,
@@ -14,8 +14,9 @@ var PostSchema = new Schema({
     city: [{
         type: Schema.Types.ObjectId,
         ref: 'City'
-    }]
+    }],
+    image: { data: Buffer, contentType: String }
 });
 
 var Post = mongoose.model('Post', PostSchema);
-module.export = Post;
+module.exports = Post;
