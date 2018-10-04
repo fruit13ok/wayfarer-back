@@ -6,15 +6,15 @@ var mongoose = require('mongoose'),
 var PostSchema = new Schema({
     dateCreated: { type: Date, default: Date.now },
     body: String,
-    user: [{
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     title: String,
-    city: [{
+    city: {
         type: Schema.Types.ObjectId,
         ref: 'City'
-    }],
+    },
     image: { data: Buffer, contentType: String }
 });
 

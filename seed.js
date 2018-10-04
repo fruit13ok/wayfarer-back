@@ -48,11 +48,10 @@ var postList = [
     {
         dateCreated: '2018-10-3',
         body: 'I visited San francisco and very loved.',
-        user: '5bb657d31d995d4415beff17',
         title: 'visited San Francisco',
         city: '5bb657d31d995d4415beff23',
         image: '/images/sanFrancicso.jpg'
-    },
+    }]
     // {
     //     dateCreated: '2018-10-3',
     //     body: 'I visited Bangkok and is great.',
@@ -141,7 +140,7 @@ var postList = [
     //     city: 'Tokyo, Japan',
     //     image: '/images/tokyo.jpg'
     // }
-];
+
 var userList = [
     {
         username: 'Yi',
@@ -246,8 +245,19 @@ var userList = [
 //     });
 // });
 
-db.User.findById('Yi', (err, users) => {
-// db.User.findOne({username: 'Yi'}, (err, users) => {
-    if (err) return console.log("ERROR", err);
-    console.log("Yi: ", users._id);
-});
+db.User.create({
+        username: 'Yi',
+        password: 'password',
+        dateJoined: '2018-10-3',
+        currentCity: 'San Francisco'
+    }, (err, user) => { 
+
+    console.log(user)
+    postList[0].user = user._id
+    db.Post.create(postList[0], (err, success) => {
+    // db.User.findOne({username: 'Yi'}, (err, users) => {
+    if (err){ return console.log("ERROR", err);}
+    console.log(success);
+    })
+})
+
