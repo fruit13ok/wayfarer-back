@@ -84,8 +84,6 @@ app.post('/api/user/create',(req, res)=>{
 /**********
  * SERVER *
  **********/
-
-// listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Express server is up and running on http://localhost:3000/');
+app.listen(process.env.PORT || 3001, function() {
+  console.log('Express server is up and running on http://localhost:3001/');
 });
