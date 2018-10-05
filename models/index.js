@@ -1,5 +1,5 @@
 
-var mongoose = require("mongoose");
+var mongoose = require('../db/connection')
 mongoose.connect("mongodb://localhost/wayfarer-back");
 
 module.exports.City = require("./cities.js");

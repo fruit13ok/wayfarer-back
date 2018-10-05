@@ -16,21 +16,13 @@ app.use(parser.json())
 //start up passport
 app.use(passport.initialize())
 
-// allow cross origin requests (optional)
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
 
 // Allow Cross Origin Requests(CORS)
 app.use(function(req, res, next) {
-  res.header ("set Access-Control-Allow-Origin "*"");
+  res.header ("set Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -38,6 +30,7 @@ app.use(function(req, res, next) {
 
 
 app.use('/users', userController);
+
 
 
 // GET REQUESTS

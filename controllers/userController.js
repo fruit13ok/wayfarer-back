@@ -86,5 +86,18 @@ router.post('/signup', (req, res) => {
     }
   })
   
+  router.get('/:name', (req, res) => {
+    let name = req.params.name
+    console.log("name: "+name)
+    User.findOne({ username: name })
+      .then(user => {
+        console.log(user)
+        res.send(user)
+
+      } )
+      .catch(function(err) { 
+        res.json(err)
+      })
+    });
 
 module.exports = router
