@@ -13,7 +13,7 @@ const User = mongoose.model('User')
 
 
 //  /users/signup
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
   console.log('Im TRYING')
     // if they gave us both move forward
     if (req.body.username && req.body.password) {

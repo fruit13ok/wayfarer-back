@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.use('/', userController);
+app.use('/users', userController);
 
 
 // GET REQUESTS
