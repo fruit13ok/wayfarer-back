@@ -10,7 +10,6 @@ userController = require('./controllers/userController')
 
 const app = express()
 
-
 app.use(cors())
 app.use(parser.json())
 
@@ -24,15 +23,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-/************
- * DATABASE *
- ************/
-
-
-
-/**********
- * ROUTES *
- **********/
 
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
@@ -49,41 +39,11 @@ app.use(function(req, res, next) {
 
 app.use('/users', userController);
 
-/*
- * HTML Endpoints
- */
-
 
 // GET REQUESTS
 app.get('/', function homepage(req, res) {
   res.send('hello');
 });
-
-
-
-// TEST FOR CREATE USER
-
-// (req, res)=>{
-//   db.User.create({
-//     username: 'Steve',
-//     password:'password',
-//     dateJoined: '10/03/2018',
-//     currentCity:'San Francisco, USA'
-//   }, function(err, newUser){
-//     if(err){
-//       console.log('Error' + err)
-//       return
-//     }
-//     else{
-//       res.status(200).send('Working' + newUser)
-//     }
-//   })
-// });
-
-/*
- * JSON API Endpoints
- */
-
 
 
 /**********

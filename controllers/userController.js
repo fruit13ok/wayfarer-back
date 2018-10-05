@@ -19,7 +19,8 @@ router.post('/signup', (req, res) => {
     if (req.body.username && req.body.password) {
       let newUser = {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        currentCity: req.body.currentCity
       }
       console.log(newUser)
       // find user based on username
