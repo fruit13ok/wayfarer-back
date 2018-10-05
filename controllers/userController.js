@@ -14,19 +14,24 @@ const User = mongoose.model('User')
 
 //  /users/signup
 router.post('/signup', (req, res) => {
+  console.log('Im TRYING')
     // if they gave us both move forward
-    if (req.body.email && req.body.password) {
+    if (req.body.username && req.body.password) {
       let newUser = {
-        email: req.body.email,
+        username: req.body.username,
         password: req.body.password
       }
-      // find user based on email
-      User.findOne({ email: req.body.email })
+      console.log(newUser)
+      // find user based on username
+      User.findOne({ username: req.body.username })
         .then((user) => {
+          console.log('found user', user)
             // if doesnt exist create new one
           if (!user) {
+            console.log('creating new user')
             User.create(newUser)
               .then(user => {
+                console.log('making new user')
                   // if succ create a user
                 if (user) {
                     // create payload if succ
@@ -46,17 +51,17 @@ router.post('/signup', (req, res) => {
           }
         })
     } else {
-        // doesnt have an email or psw
+        // doesnt have an username or psw
       res.sendStatus(401).json({err:'Invalid username or password.'})
     }
   })
 
   // /users/login
   router.post('/login', (req, res) => {
-    // if they gave us both email and password
-    if (req.body.email && req.body.password) {
-      // find by email
-      User.findOne({ email: req.body.email }).then(user => {
+    // if they gave us both username and password
+    if (req.body.username && req.body.password) {
+      // find by username
+      User.findOne({ username: req.body.username }).then(user => {
         // if we found a user
         if (user) {
           // if user password == req password
