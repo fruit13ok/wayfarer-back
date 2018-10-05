@@ -1,36 +1,36 @@
 const passport = require('passport')
 const passportJWT = require('passport-jwt')
 const ExtractJwt = passportJWT.ExtractJwt
-const Strategy = passportJWT.Strategy
+const Strategy = passportJWT.Strategy 
 
 const config = require('./config')
 
-const mongoose = require('../models/User')
+const mongoose = require('../models/users')
 const User = mongoose.model('User')
 
-const params = {
+const params = {  
     secretOrKey: config.jwtSecret,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 }
 
-module.exports = ()=>{
-    var strategy = new Strategy(params, (payload, callback) => {
-        var user = User.findById(payload.id) || null
-        if (user){
+module.exports = function() {  
+    let strategy = new Strategy(params, (payload, callback) => {
+        let user = User.findById(payload.id) || null
+        if (user) {
             return callback(null, {
                 id: user.id
             })
-        }else{
+        } else {
             return callback(new Error("User not found"), null)
         }
     })
     passport.use(strategy)
     return {
-        initilize: ()=>{
+        initialize: function() {
             return passport.initialize()
         },
-        authenticate: ()=>{
-            return passport.authenticate("jwt", {session:false})
+        authenticate: function() {
+            return passport.authenticate("jwt", {session: false})
         }
     }
 }

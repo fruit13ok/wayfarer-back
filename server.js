@@ -1,34 +1,34 @@
 // require express and other modules
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const 
+express = require('express'),
+mongoose = require('mongoose'),
+Schema = mongoose.Schema,
+parser = require('body-parser'),
+cors = require('cors'),
+passport = require('./config/passport')(),
+userController = require('./controllers/userController')
 
-// parse incoming urlencoded form data
-// and populate the req.body object
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+const app = express()
+
+
+app.use(cors())
+app.use(parser.json())
+
+//start up passport
+app.use(passport.initialize())
 
 // allow cross origin requests (optional)
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
-// like django let user to upload image to uploads folder
-// app.use(multer({ dest: './uploads/',
-//   rename: function (fieldname, filename) {
-//     return filename;
-//   },
-//  }));
-
 /************
  * DATABASE *
  ************/
 
-var db = require('./models');
+
 
 /**********
  * ROUTES *
@@ -46,6 +46,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+app.use('/users', userController);
+
 /*
  * HTML Endpoints
  */
@@ -56,24 +59,26 @@ app.get('/', function homepage(req, res) {
   res.send('hello');
 });
 
-// POST REQUESTS
-// let newUser = req.body.username
-app.post('/api/user/create',(req, res)=>{
-  db.User.create({
-    username: 'Steve',
-    password:'password',
-    dateJoined: '10/03/2018',
-    currentCity:'San Francisco, USA'
-  }, function(err, newUser){
-    if(err){
-      console.log('Error' + err)
-      return
-    }
-    else{
-      res.status(200).send('Working' + newUser)
-    }
-  })
-});
+
+
+// TEST FOR CREATE USER
+
+// (req, res)=>{
+//   db.User.create({
+//     username: 'Steve',
+//     password:'password',
+//     dateJoined: '10/03/2018',
+//     currentCity:'San Francisco, USA'
+//   }, function(err, newUser){
+//     if(err){
+//       console.log('Error' + err)
+//       return
+//     }
+//     else{
+//       res.status(200).send('Working' + newUser)
+//     }
+//   })
+// });
 
 /*
  * JSON API Endpoints
