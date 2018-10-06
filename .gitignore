@@ -3,6 +3,10 @@
 # dependencies
 node_modules/
 
+#passport 
+config/
+
+#pass
 # testing
 /coverage
 
