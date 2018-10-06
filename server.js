@@ -22,7 +22,6 @@ app.use(express.static('public'));
 
 // Allow Cross Origin Requests(CORS)
 app.use(function(req, res, next) {
-  res.header ("set Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -35,7 +34,7 @@ app.use('/users', userController);
 
 // GET REQUESTS
 app.get('/', function homepage(req, res) {
-  res.send('hello');
+  res.send('Server Running Successfully for Wayfarer Twilight');
 });
 
 
