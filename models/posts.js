@@ -1,4 +1,5 @@
-var mongoose = require('mongoose'),
+// var mongoose = require('mongoose'),
+var mongoose = require('../db/connection'),
     Schema = mongoose.Schema;
     User = require('./users');
     City = require('./cities');
