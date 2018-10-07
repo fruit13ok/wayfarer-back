@@ -34,7 +34,7 @@ app.use('/users', userController);
 
 // GET REQUESTS
 app.get('/', function homepage(req, res) {
-  res.send('hello');
+  res.send('Server Running Successfully for Wayfarer Twilight');
 });
 
 

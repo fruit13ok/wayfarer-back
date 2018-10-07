@@ -14,35 +14,36 @@ var cityList = [
     {
         photo: '/images/london.jpg',
         name: 'London, UK'
-    },
-    {
-        photo: '/images/paris.jpg',
-        name: 'Paris, France'
-    },
-    {
-        photo: '/images/dubai.jpg',
-        name: 'Dubai, UAE'
-    },
-    {
-        photo: '/images/newYorkCity.jpg',
-        name: 'New York City, USA'
-    },
-    {
-        photo: '/images/tokyo.jpg',
-        name: 'Tokyo, Japan'
-    },
-    {
-        photo: '/images/sydney.jpg',
-        name: 'Sydney, Australia'
-    },
-    {
-        photo: '/images/seattle.jpg',
-        name: 'Seattle, USA'
-    },
-    {
-        photo: '/images/mexicoCity.png',
-        name: 'Mexico City, Mexico'
     }
+    // ,
+    // {
+    //     photo: '/images/paris.jpg',
+    //     name: 'Paris, France'
+    // },
+    // {
+    //     photo: '/images/dubai.jpg',
+    //     name: 'Dubai, UAE'
+    // },
+    // {
+    //     photo: '/images/newYorkCity.jpg',
+    //     name: 'New York City, USA'
+    // },
+    // {
+    //     photo: '/images/tokyo.jpg',
+    //     name: 'Tokyo, Japan'
+    // },
+    // {
+    //     photo: '/images/sydney.jpg',
+    //     name: 'Sydney, Australia'
+    // },
+    // {
+    //     photo: '/images/seattle.jpg',
+    //     name: 'Seattle, USA'
+    // },
+    // {
+    //     photo: '/images/mexicoCity.png',
+    //     name: 'Mexico City, Mexico'
+    // }
 ];
 var postList = [
     {
@@ -71,61 +72,62 @@ var userList = [
         password: 'password',
         dateJoined: '2018-10-3',
         currentCity: 'San Francisco'
-    },
-    {
-        username: 'Andrea',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Dalton',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Justin',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Luke',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Francisco',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Raj',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Alan',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'WaiKa',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    },
-    {
-        username: 'Gino',
-        password: 'password',
-        dateJoined: '2018-10-3',
-        currentCity: 'San Francisco'
-    }
+     }
+    //,
+    // {
+    //     username: 'Andrea',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Dalton',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Justin',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Luke',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Francisco',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Raj',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Alan',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'WaiKa',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // },
+    // {
+    //     username: 'Gino',
+    //     password: 'password',
+    //     dateJoined: '2018-10-3',
+    //     currentCity: 'San Francisco'
+    // }
 ];
 
 
