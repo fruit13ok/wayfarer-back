@@ -16,13 +16,8 @@ const User = mongoose.model('User')
 router.post('/signup', (req, res) => {
   console.log('Im TRYING')
     // if they gave us both move forward
-    if (req.body.username && req.body.password) {
-      let newUser = {
-        username: req.body.username,
-        password: req.body.password,
-        currentCity: req.body.currentCity
-      }
-      console.log(newUser)
+    if (req.body.username) {
+      console.log("user input" + req.body.username)
       // find user based on username
       User.findOne({ username: req.body.username })
         .then((user) => {
@@ -30,7 +25,20 @@ router.post('/signup', (req, res) => {
             // if doesnt exist create new one
           if (!user) {
             console.log('creating new user')
-            User.create(newUser)
+            bcrypt.hash(req.body.password, 10, (err, hash) => {
+              if(err){ 
+                console.log("hashing error:", err);
+                
+                res.status(200).json({error: err})
+              // we now have a successful hashed password
+              
+              })
+            else {
+            User.create({
+              username: req.body.username,
+              password: req.body.password,
+              currentCity: req.body.currentCity
+            })
               .then(user => {
                 console.log('making new user')
                   // if succ create a user
@@ -46,9 +54,7 @@ router.post('/signup', (req, res) => {
                   res.sendStatus(401).json({err:'Try Again.'})
                 }
               })
-              .then( user => {
-                return res.redirect('/profile');
-                })
+            
           } else {
               // user was already in db
             res.sendStatus(401).json({err:'User already exists.'})
@@ -102,4 +108,4 @@ router.get('/:name', (req, res) => {
     })
   });
 
-module.exports = router
+module.exports = WHATrouter
