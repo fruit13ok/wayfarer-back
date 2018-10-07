@@ -51,35 +51,44 @@ router.post('/signup', (req, res) => {
 
   
   router.post('/login', (req, res) => {
+    console.log(`${req.body.username} is logging in: ${req.body.password}`)
     if (req.body.username && req.body.password) {
       User.findOne({ username: req.body.username })
       .then(user => {
         if (user) {          
-          if (bcrypt.compare(req.body.password, user.password,(err,match)=>{console.log(match)
-            if(err){
-              return res.status(500).json({err})
-            }
-            
-            let payload = { id: user.id }
-            let token = jwt.encode(payload, config.jwtSecret)
-            res.json({ token })
-            // else if(match){
-            //   const token = {username: user.username},
-            //   "twilight"
-            // }
-          })) {              
+          console.log(`Got user: ${user}`)
+          if (bcrypt.compare(req.body.password, user.password, (err,match)=>{
+                console.log('successful login ' + match)
+                if(err){
+                  console.log('compare err ' + err)
+                  res.status(500).json({err})
+                  return
+                }
+                
+                let payload = { id: user.id }
+                let token = jwt.encode(payload, config.jwtSecret)
+                console.log(config.jwtSecret)
+                res.status(200).json({ token })
+                return
+              }
+            )
+          ) {     
+            console.log("payload")         
             let payload = { id: user.id }            
             let token = jwt.encode(payload, config.jwtSecret)      
             res.json({ token })
           } else {
-            res.sendStatus(401).json({err:'Try Again.'})
+            console.log("resend")         
+            res.end()
           }
         } else {
+          console.log("user or pass")         
           res.sendStatus(401).json({err:'User or password not found.'})
         }
       })
-    } else {
-      res.sendStatus(401).json({err:'Invalid username or password.'})
+    } 
+    else {
+      console.log('else statement')
     }
   })
   
