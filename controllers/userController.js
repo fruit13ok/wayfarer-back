@@ -46,9 +46,6 @@ router.post('/signup', (req, res) => {
                   res.sendStatus(401).json({err:'Try Again.'})
                 }
               })
-              .then( user => {
-                return res.redirect('/profile');
-                })
           } else {
               // user was already in db
             res.sendStatus(401).json({err:'User already exists.'})
