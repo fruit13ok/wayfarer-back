@@ -36,7 +36,9 @@ router.post('/signup', (req, res) => {
                   // if succ create a user
                 if (user) {
                     // create payload if succ
-                  let payload = { id: newUser.id }
+                  let payload = { 
+                    id: newUser.id,
+                    username: newUser.username }
                   // create jwt with payload
                   let token = jwt.encode(payload, config.jwtSecret)
                   // after create send it back
