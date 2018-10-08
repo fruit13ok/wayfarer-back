@@ -11,6 +11,7 @@ const config = require('../config/config')
 const mongoose = require('../models/users')
 const User = mongoose.model('User')
 
+const jwt1 = require('jsonwebtoken')
 
 //  /users/signup
 router.post('/signup', (req, res) => {
@@ -65,13 +66,18 @@ router.post('/signup', (req, res) => {
     if (req.body.username && req.body.password) {
       // find by username
       User.findOne({ username: req.body.username }).then(user => {
+        
         // if we found a user
         if (user) {
           // if user password == req password
           if (user.password === req.body.password) {
+            console.log('HERE IS THE USER!',user)
             // then they are authorized 
             // make payload
-            let payload = { id: user.id }
+            let payload = { 
+              id: user.id,
+              username: user.username 
+            }
             // create token
             let token = jwt.encode(payload, config.jwtSecret)
             // send them the token
@@ -100,5 +106,40 @@ router.get('/:name', (req, res) => {
       res.json(err)
     })
   });
+
+router.post ('/verify',verifyToken, (req,res) => {
+
+  // const bearerHeader = req.headers['authorization'];
+  // console.log("HEADER:", bearerHeader)
+
+  let verified= jwt1.verify(req.token, config.jwtSecret)
+  console.log("verified: ", verified)
+  res.json(verified)
+})
+
+// Verify Tokenj 
+function verifyToken(req, res, next) {
+  console.log("in verify...");
+  // Get auth header value
+  // when we send our token, we want to send it in our header
+  const bearerHeader = req.headers['authorization'];
+  console.log(bearerHeader)
+  // Check if bearer is undefined
+  if(typeof bearerHeader !== 'undefined'){
+    const bearer = bearerHeader.split(' ');
+    // Get token from array
+    const bearerToken = bearer[1];
+    // Set the token
+    req.token = bearerToken;
+    // Next middleware
+    next();
+
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+}
+
+
 
 module.exports = router
